@@ -124,11 +124,11 @@ Pushdown Automaton (PDA) didefinisikan sebagai **7-tuple**:
 
 ## Tim & Kontribusi
 
-Berikut adalah anggota tim yang berkontribusi secara merata dalam seluruh aspek pengembangan aplikasi ini (mulai dari perancangan UI/UX, implementasi logika mesin PDA, pengujian string, hingga dokumentasi):
-
-- **Indra Wahyu Tirtayasa** - 5025241108
-- **Herdian Tri Wardhana** - 5025241229
-- **Raymond Julius Pardosi** - 5025241268
+| Nama | NRP | Kontribusi |
+|------|-----|------------|
+| Indra Wahyu Tirtayasa | 5025241108 | Perancangan UI/UX, Implementasi Logika PDA, Pengujian, Dokumentasi (33.33%) |
+| Herdian Tri Wardhana | 5025241229 | Perancangan UI/UX, Implementasi Logika PDA, Pengujian, Dokumentasi (33.33%) |
+| Raymond Julius Pardosi | 5025241268 | Perancangan UI/UX, Implementasi Logika PDA, Pengujian, Dokumentasi (33.33%) |
 
 ## Lisensi
 
