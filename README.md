@@ -8,7 +8,7 @@
 
 ---
 
-## 📋 Deskripsi
+## Deskripsi
 
 PDA Simulator adalah aplikasi web yang memungkinkan pengguna untuk:
 - Mendefinisikan mesin PDA secara lengkap (7-tuple)
@@ -16,7 +16,7 @@ PDA Simulator adalah aplikasi web yang memungkinkan pengguna untuk:
 - Melihat jejak eksekusi langkah demi langkah
 - Memvisualisasikan kondisi stack secara real-time
 
-## ✨ Fitur
+## Fitur
 
 | Fitur | Keterangan |
 |-------|------------|
@@ -30,7 +30,7 @@ PDA Simulator adalah aplikasi web yang memungkinkan pengguna untuk:
 | **Definisi Formal** | Tampilan otomatis 7-tuple M = (Q, Σ, Γ, δ, q₀, Z₀, F) |
 | **UI Modern** | Dark theme, glassmorphism, gradient, micro-animations, responsive |
 
-## 🚀 Cara Menjalankan
+## Cara Menjalankan
 
 ### Opsi 1: Dengan Python (Recommended)
 
@@ -56,7 +56,7 @@ Cukup buka file `index.html` langsung di browser (double-click).
 
 ---
 
-## 📤 Upload ke GitHub
+## Upload ke GitHub
 
 ```bash
 cd Tugas-Praktikum-3-Otomata
@@ -68,7 +68,7 @@ git remote add origin https://github.com/Shadow2j/Tugas-Praktikum-3-Otomata.git
 git push -u origin main
 ```
 
-## 📖 Cara Menggunakan
+## Cara Menggunakan
 
 1. **Definisikan PDA**
    - Masukkan daftar states, alfabet input, dan alfabet stack (pisahkan dengan koma)
@@ -94,7 +94,7 @@ git push -u origin main
 5. **Contoh PDA**
    - Klik tombol **Contoh** untuk memuat contoh PDA yang sudah tersedia
 
-## 🏗️ Struktur Proyek
+## Struktur Proyek
 
 ```
 ├── index.html          # Halaman utama aplikasi
@@ -106,7 +106,7 @@ git push -u origin main
 └── README.md           # Dokumentasi
 ```
 
-## 🧠 Konsep PDA
+## Konsep PDA
 
 Pushdown Automaton (PDA) didefinisikan sebagai **7-tuple**:
 
@@ -122,6 +122,14 @@ Pushdown Automaton (PDA) didefinisikan sebagai **7-tuple**:
 | Z₀ | Simbol awal stack |
 | F | Himpunan state penerima |
 
-## 📄 Lisensi
+## Tim & Kontribusi
+
+Berikut adalah anggota tim yang berkontribusi secara merata dalam seluruh aspek pengembangan aplikasi ini (mulai dari perancangan UI/UX, implementasi logika mesin PDA, pengujian string, hingga dokumentasi):
+
+- **Indra Wahyu Tirtayasa** - 5025241108
+- **Herdian Tri Wardhana** - 5025241229
+- **Raymond Julius Pardosi** - 5025241268
+
+## Lisensi
 
 MIT License
