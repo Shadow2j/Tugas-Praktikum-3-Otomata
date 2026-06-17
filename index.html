@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA Simulator - Pushdown Automaton</title>
+    <meta name="description" content="Simulator Pushdown Automaton (PDA) interaktif untuk mengotomasi dan menguji string pada mesin PDA">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="bg-orb bg-orb-1"></div>
+        <div class="bg-orb bg-orb-2"></div>
+        <div class="bg-orb bg-orb-3"></div>
+    </div>
+
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header" id="app-header">
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo-icon">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <circle cx="16" cy="16" r="14" stroke="url(#logoGrad)" stroke-width="2.5"/>
+                            <circle cx="16" cy="10" r="3" fill="url(#logoGrad)"/>
+                            <circle cx="10" cy="20" r="3" fill="url(#logoGrad)"/>
+                            <circle cx="22" cy="20" r="3" fill="url(#logoGrad)"/>
+                            <line x1="16" y1="13" x2="11" y2="18" stroke="url(#logoGrad)" stroke-width="1.5"/>
+                            <line x1="16" y1="13" x2="21" y2="18" stroke="url(#logoGrad)" stroke-width="1.5"/>
+                            <defs>
+                                <linearGradient id="logoGrad" x1="0" y1="0" x2="32" y2="32">
+                                    <stop offset="0%" stop-color="#818cf8"/>
+                                    <stop offset="100%" stop-color="#c084fc"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="app-title">PDA Simulator</h1>
+                        <p class="app-subtitle">Pushdown Automaton Machine</p>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-ghost" id="btn-help" title="Bantuan">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        <span>Bantuan</span>
+                    </button>
+                    <button class="btn btn-ghost" id="btn-reset-all" title="Reset Semua">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+                        <span>Reset</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Left Panel: PDA Definition -->
+            <section class="panel panel-definition" id="panel-definition">
+                <div class="panel-header">
+                    <h2 class="panel-title">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                        Definisi PDA
+                    </h2>
+                    <div class="panel-actions">
+                        <button class="btn btn-sm btn-accent" id="btn-load-example" title="Muat Contoh PDA">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Contoh
+                        </button>
+                    </div>
+                </div>
+
+                <div class="panel-body">
+                    <!-- PDA Components -->
+                    <div class="form-section">
+                        <div class="form-group" id="fg-states">
+                            <label class="form-label">
+                                States (Q)
+                                <span class="form-hint">pisahkan dengan koma</span>
+                            </label>
+                            <input type="text" class="form-input" id="input-states" placeholder="q0, q1, q2, q3" autocomplete="off">
+                        </div>
+
+                        <div class="form-group" id="fg-input-alphabet">
+                            <label class="form-label">
+                                Input Alphabet (Σ)
+                                <span class="form-hint">pisahkan dengan koma</span>
+                            </label>
+                            <input type="text" class="form-input" id="input-alphabet" placeholder="a, b" autocomplete="off">
+                        </div>
+
+                        <div class="form-group" id="fg-stack-alphabet">
+                            <label class="form-label">
+                                Stack Alphabet (Γ)
+                                <span class="form-hint">pisahkan dengan koma</span>
+                            </label>
+                            <input type="text" class="form-input" id="input-stack-alphabet" placeholder="A, Z" autocomplete="off">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group" id="fg-start-state">
+                                <label class="form-label">Start State (q₀)</label>
+                                <select class="form-select" id="input-start-state">
+                                    <option value="">-- Pilih --</option>
+                                </select>
+                            </div>
+                            <div class="form-group" id="fg-start-stack">
+                                <label class="form-label">Start Stack (Z₀)</label>
+                                <select class="form-select" id="input-start-stack">
+                                    <option value="">-- Pilih --</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group" id="fg-accept-states">
+                            <label class="form-label">Accept States (F)</label>
+                            <div class="checkbox-group" id="accept-states-group">
+                                <p class="placeholder-text">Definisikan states terlebih dahulu</p>
+                            </div>
+                        </div>
+
+                        <div class="form-group" id="fg-accept-mode">
+                            <label class="form-label">Mode Penerimaan</label>
+                            <div class="radio-group">
+                                <label class="radio-option">
+                                    <input type="radio" name="accept-mode" value="final-state" checked>
+                                    <span class="radio-custom"></span>
+                                    <span>Final State</span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="accept-mode" value="empty-stack">
+                                    <span class="radio-custom"></span>
+                                    <span>Empty Stack</span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="accept-mode" value="both">
+                                    <span class="radio-custom"></span>
+                                    <span>Keduanya</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Transition Function -->
+                    <div class="form-section">
+                        <div class="section-header">
+                            <h3 class="section-title">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                                Fungsi Transisi (δ)
+                            </h3>
+                            <button class="btn btn-sm btn-primary" id="btn-add-transition">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                                Tambah
+                            </button>
+                        </div>
+
+                        <div class="transition-header-row">
+                            <span>State</span>
+                            <span>Input</span>
+                            <span>Stack Top</span>
+                            <span>→</span>
+                            <span>Next State</span>
+                            <span>Push Stack</span>
+                            <span></span>
+                        </div>
+
+                        <div class="transitions-list" id="transitions-list">
+                            <!-- Transitions will be added here dynamically -->
+                        </div>
+
+                        <div class="transition-empty" id="transition-empty">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.4"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+                            <p>Belum ada transisi</p>
+                            <p class="sub">Klik "Tambah" untuk menambahkan fungsi transisi</p>
+                        </div>
+                    </div>
+
+                    <!-- Formal Definition Display -->
+                    <div class="form-section" id="formal-definition-section" style="display:none;">
+                        <h3 class="section-title">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                            Definisi Formal
+                        </h3>
+                        <div class="formal-def-box" id="formal-def-box"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right Panel: Testing -->
+            <section class="panel panel-testing" id="panel-testing">
+                <div class="panel-header">
+                    <h2 class="panel-title">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                        Pengujian String
+                    </h2>
+                </div>
+
+                <div class="panel-body">
+                    <!-- String Input -->
+                    <div class="test-input-section">
+                        <div class="form-group">
+                            <label class="form-label">Input String (w)</label>
+                            <div class="input-with-btn">
+                                <input type="text" class="form-input input-test" id="input-test-string" placeholder="Masukkan string untuk diuji..." autocomplete="off">
+                                <button class="btn btn-primary btn-run" id="btn-run-test">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                                    Jalankan
+                                </button>
+                            </div>
+                            <div class="test-options">
+                                <label class="checkbox-option">
+                                    <input type="checkbox" id="chk-epsilon-input" >
+                                    <span class="checkbox-custom"></span>
+                                    <span>Uji string kosong (ε)</span>
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" id="chk-step-mode" checked>
+                                    <span class="checkbox-custom"></span>
+                                    <span>Tampilkan langkah-langkah</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Result -->
+                    <div class="result-section" id="result-section" style="display:none;">
+                        <div class="result-card" id="result-card">
+                            <div class="result-icon" id="result-icon"></div>
+                            <div class="result-text">
+                                <span class="result-label" id="result-label"></span>
+                                <span class="result-string" id="result-string"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Execution Trace -->
+                    <div class="trace-section" id="trace-section" style="display:none;">
+                        <div class="section-header">
+                            <h3 class="section-title">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                                Jejak Eksekusi
+                            </h3>
+                            <div class="trace-controls">
+                                <button class="btn btn-sm btn-ghost" id="btn-trace-prev" title="Langkah Sebelumnya" disabled>
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                                </button>
+                                <span class="trace-counter" id="trace-counter">0 / 0</span>
+                                <button class="btn btn-sm btn-ghost" id="btn-trace-next" title="Langkah Selanjutnya" disabled>
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                                </button>
+                                <button class="btn btn-sm btn-ghost" id="btn-trace-play" title="Auto Play">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Current Configuration Display -->
+                        <div class="config-display" id="config-display">
+                            <div class="config-item">
+                                <span class="config-label">State</span>
+                                <span class="config-value" id="config-state">-</span>
+                            </div>
+                            <div class="config-item">
+                                <span class="config-label">Sisa Input</span>
+                                <span class="config-value config-mono" id="config-remaining">-</span>
+                            </div>
+                            <div class="config-item">
+                                <span class="config-label">Stack</span>
+                                <span class="config-value config-mono" id="config-stack">-</span>
+                            </div>
+                        </div>
+
+                        <!-- Stack Visualization -->
+                        <div class="stack-visual-container">
+                            <h4 class="stack-visual-title">Visualisasi Stack</h4>
+                            <div class="stack-visual" id="stack-visual">
+                                <div class="stack-empty-msg">Stack kosong</div>
+                            </div>
+                        </div>
+
+                        <!-- Trace Table -->
+                        <div class="trace-table-wrapper">
+                            <table class="trace-table" id="trace-table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>State</th>
+                                        <th>Input Dibaca</th>
+                                        <th>Sisa Input</th>
+                                        <th>Stack Top</th>
+                                        <th>Push</th>
+                                        <th>Stack</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="trace-table-body">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Batch Testing -->
+                    <div class="batch-section">
+                        <div class="section-header">
+                            <h3 class="section-title">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+                                Pengujian Batch
+                            </h3>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Masukkan beberapa string <span class="form-hint">satu per baris</span></label>
+                            <textarea class="form-textarea" id="input-batch" rows="4" placeholder="aabb&#10;ab&#10;aaabbb&#10;aab"></textarea>
+                        </div>
+                        <button class="btn btn-primary btn-full" id="btn-run-batch">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                            Jalankan Semua
+                        </button>
+                        <div class="batch-results" id="batch-results" style="display:none;">
+                            <table class="batch-table" id="batch-table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>String</th>
+                                        <th>Hasil</th>
+                                        <th>Langkah</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="batch-table-body"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Help Modal -->
+    <div class="modal-overlay" id="modal-help" style="display:none;">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Bantuan - PDA Simulator</h2>
+                <button class="btn btn-ghost btn-close-modal" id="btn-close-help">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="help-section">
+                    <h3>Apa itu PDA?</h3>
+                    <p>Pushdown Automaton (PDA) adalah mesin otomata yang memiliki stack sebagai memori tambahan. PDA lebih kuat dari Finite Automata karena dapat mengenali bahasa context-free.</p>
+                </div>
+                <div class="help-section">
+                    <h3>Definisi Formal PDA</h3>
+                    <p>PDA didefinisikan sebagai 7-tuple: <strong>M = (Q, Σ, Γ, δ, q₀, Z₀, F)</strong></p>
+                    <ul>
+                        <li><strong>Q</strong> = Himpunan state</li>
+                        <li><strong>Σ</strong> = Alfabet input</li>
+                        <li><strong>Γ</strong> = Alfabet stack</li>
+                        <li><strong>δ</strong> = Fungsi transisi: Q × (Σ ∪ {ε}) × Γ → Q × Γ*</li>
+                        <li><strong>q₀</strong> = State awal</li>
+                        <li><strong>Z₀</strong> = Simbol awal stack</li>
+                        <li><strong>F</strong> = Himpunan state penerima</li>
+                    </ul>
+                </div>
+                <div class="help-section">
+                    <h3>Cara Menggunakan</h3>
+                    <ol>
+                        <li>Masukkan daftar states, alfabet input, dan alfabet stack</li>
+                        <li>Pilih state awal dan simbol awal stack</li>
+                        <li>Tentukan state penerima (accept states)</li>
+                        <li>Tambahkan fungsi transisi satu per satu</li>
+                        <li>Masukkan string yang ingin diuji</li>
+                        <li>Klik "Jalankan" untuk melihat hasil</li>
+                    </ol>
+                </div>
+                <div class="help-section">
+                    <h3>Transisi</h3>
+                    <p>Format transisi: <code>δ(state, input, stackTop) = (nextState, pushStack)</code></p>
+                    <ul>
+                        <li>Gunakan <strong>ε</strong> untuk transisi epsilon (tanpa membaca input)</li>
+                        <li>Pada kolom "Push Stack", masukkan simbol-simbol yang akan dipush (dari kiri ke kanan, simbol paling kiri akan berada di top stack)</li>
+                        <li>Gunakan <strong>ε</strong> pada Push Stack untuk melakukan pop tanpa push (menghapus top stack)</li>
+                    </ul>
+                </div>
+                <div class="help-section">
+                    <h3>Mode Penerimaan</h3>
+                    <ul>
+                        <li><strong>Final State</strong>: String diterima jika PDA berakhir di state penerima setelah membaca seluruh input</li>
+                        <li><strong>Empty Stack</strong>: String diterima jika stack kosong setelah membaca seluruh input</li>
+                        <li><strong>Keduanya</strong>: String diterima jika salah satu kondisi terpenuhi</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Example Modal -->
+    <div class="modal-overlay" id="modal-example" style="display:none;">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Pilih Contoh PDA</h2>
+                <button class="btn btn-ghost btn-close-modal" id="btn-close-example">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="example-grid" id="example-grid">
+                    <!-- Examples will be populated by JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="pda-engine.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

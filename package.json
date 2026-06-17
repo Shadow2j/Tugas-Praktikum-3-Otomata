@@ -1,0 +1,20 @@
+{
+  "name": "pda-simulator",
+  "version": "1.0.0",
+  "description": "Pushdown Automaton (PDA) Simulator - Program untuk mengotomasi mesin PDA dengan antarmuka interaktif",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx -y live-server --port=3000 --open=index.html",
+    "start": "npx -y live-server --port=3000 --open=index.html",
+    "serve": "python -m http.server 3000"
+  },
+  "keywords": [
+    "pda",
+    "pushdown-automaton",
+    "automata",
+    "simulator",
+    "formal-language"
+  ],
+  "author": "",
+  "license": "MIT"
+}
