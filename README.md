@@ -35,8 +35,8 @@ PDA Simulator adalah aplikasi web yang memungkinkan pengguna untuk:
 ### Opsi 1: Dengan Python (Recommended)
 
 ```bash
-git clone https://github.com/<username>/<repo-name>.git
-cd <repo-name>
+git clone https://github.com/Shadow2j/Tugas-Praktikum-3-Otomata.git
+cd Tugas-Praktikum-3-Otomata
 python -m http.server 3000
 ```
 Buka browser di `http://localhost:3000`
@@ -44,8 +44,8 @@ Buka browser di `http://localhost:3000`
 ### Opsi 2: Dengan Node.js
 
 ```bash
-git clone https://github.com/<username>/<repo-name>.git
-cd <repo-name>
+git clone https://github.com/Shadow2j/Tugas-Praktikum-3-Otomata.git
+cd Tugas-Praktikum-3-Otomata
 npm run dev
 ```
 Aplikasi akan terbuka otomatis di browser pada `http://localhost:3000`
@@ -59,12 +59,12 @@ Cukup buka file `index.html` langsung di browser (double-click).
 ## 📤 Upload ke GitHub
 
 ```bash
-cd <folder-proyek>
+cd Tugas-Praktikum-3-Otomata
 git init
 git add .
 git commit -m "Initial commit: PDA Simulator"
 git branch -M main
-git remote add origin https://github.com/<username>/<repo-name>.git
+git remote add origin https://github.com/Shadow2j/Tugas-Praktikum-3-Otomata.git
 git push -u origin main
 ```
 
