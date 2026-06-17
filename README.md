@@ -7,7 +7,14 @@
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
 
 ---
+## Tim & Kontribusi
 
+| Nama | NRP | Kontribusi |
+|------|-----|------------|
+| Indra Wahyu Tirtayasa | 5025241108 | Perancangan Antarmuka (UI/UX) dan Interaksi Pengguna (33.33%) |
+| Herdian Tri Wardhana | 5025241229 | Implementasi Logika Algoritma Mesin PDA (33.33%) |
+| Raymond Julius Pardosi | 5025241268 | Pengujian Mesin, Debugging, dan Dokumentasi (33.33%) |
+---
 ## Deskripsi
 
 PDA Simulator adalah aplikasi web yang memungkinkan pengguna untuk:
@@ -122,13 +129,6 @@ Pushdown Automaton (PDA) didefinisikan sebagai **7-tuple**:
 | Z₀ | Simbol awal stack |
 | F | Himpunan state penerima |
 
-## Tim & Kontribusi
-
-| Nama | NRP | Kontribusi |
-|------|-----|------------|
-| Indra Wahyu Tirtayasa | 5025241108 | Perancangan Antarmuka (UI/UX) dan Interaksi Pengguna (33.33%) |
-| Herdian Tri Wardhana | 5025241229 | Implementasi Logika Algoritma Mesin PDA (33.33%) |
-| Raymond Julius Pardosi | 5025241268 | Pengujian Mesin, Debugging, dan Dokumentasi (33.33%) |
 
 ## Lisensi
 
